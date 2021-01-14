@@ -36,6 +36,9 @@ Value HasPropertyWithCppStyleString(const CallbackInfo& info);
 Value AddFinalizer(const CallbackInfo& info);
 Value AddFinalizerWithHint(const CallbackInfo& info);
 
+// Native wrapper for testing Object::InstanceOf()
+Value InstanceOf(const CallbackInfo& info);
+
 static bool testValue = true;
 // Used to test void* Data() integrity
 struct UserDataHolder {
@@ -264,6 +267,8 @@ Object InitObject(Env env) {
 
   exports["addFinalizer"] = Function::New(env, AddFinalizer);
   exports["addFinalizerWithHint"] = Function::New(env, AddFinalizerWithHint);
+
+  exports["instanceOf"] = Function::New(env, InstanceOf);
 
   return exports;
 }
